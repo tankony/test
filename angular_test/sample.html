@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="ja" ng-app="TestModule">
+    <head>
+
+        <title>test</title>
+        <meta charset="utf-8">
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
+        <script src="sample.js"></script>
+    </head>
+    <body>
+        <h1>angular test</h1>
+        <div ng-controller="TestCtrl">
+            <input type="text" ng-model="name">
+            <button ng-click="onClickbtn()">push!</button>
+            <p>{{name}}</p>
+            <p>{{push_name}}</p>
+            <p>{{now | date: 'MM/dd HH:mm:ss'}}</p>
+        </div>
+
+        <div ng-controller="TestCtrl2">
+            <input type="text" ng-model="searchWord">
+            <pre>{{names | filter: searchWord | json | uppercase }}</pre>
+            <pre>{{names | filter: searchWord | json | uppercase | changepiyo:'hoge'}}</pre>
+            <ul >
+                <li ng-repeat="na in names">{{na}}</li>
+            </ul>
+            <table>
+                <tr ng-repeat="na in names | orderBy">
+                    <td>{{na}}</td>
+                    <td>{{$index}}</td>
+                    <td>{{$first}}</td>
+                    <td>{{$middle}}</td>
+                    <td>{{$last}}</td>
+                    <td>{{$even}}</td>
+                    <td>{{$od}}</td>
+                </tr>
+            </table>
+        </div>
+    </body>
+</html>
