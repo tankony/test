@@ -4,7 +4,7 @@
 
         <title>test</title>
         <meta charset="utf-8">
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
+        <script src="../../script/angular.min.js"></script>
         <script src="sample.js"></script>
     </head>
     <body>
@@ -36,5 +36,48 @@
                 </tr>
             </table>
         </div>
+
+        <div ng-controller="TestCtrl3">
+            <ul>
+                <li ng-repeat="member in members">{{member.name}}</li>
+            </ul>
+        </div>
+
+        <h1>recipe - value</h1>
+        <div ng-controller="ValueCtrl">
+            <pre>{{values | json}}</pre>
+        </div>
+
+        <h1>recipe - constant</h1>
+        <div ng-controller="ConstantCtrl">
+            <pre>{{constant_value}}</pre>
+        </div>
+
+        <h1>recipe - factory</h1>
+        <div ng-controller="FactoryCtrl">
+            <h3>{{counter.count}}</h3>
+            <button ng-click="counter.increment()">+1</button>
+            <button ng-click="counter.add(10)">+10</button>
+        </div>
+
+
+        <h1>recipe - service</h1>
+        <div ng-controller="ServiceCtrl">
+            <h3>{{counter.count}}</h3>
+            <button ng-click="counter.increment()">+1</button>
+            <button ng-click="counter.add(10)">+10</button>
+        </div>
+
+
+        <h1>recipe - provider</h1>
+        <div ng-controller="ProviderCtrl">
+            <h3>{{counter.count}}</h3>
+            <button ng-click="counter.increment()">+1</button>
+            <button ng-click="counter.add(10)">+10</button>
+
+            <pre>{{value[0].name | json}}</pre>
+            <button ng-click="changename()">CHANGE</button>
+        </div>
+
     </body>
 </html>
