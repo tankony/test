@@ -233,3 +233,60 @@ app.directive('testBtn', function() {
 });
 
 
+/*
+ *  controllerで定義したfunctionをローカルディレクティブで利用できる
+ *  isolate scope
+ */
+app.directive('testBtnGroup', function() {
+    return {
+        restrict: 'E',
+        scope: {
+            labels: '=',
+            onSelect: '&'
+        },
+        replace: true,
+        template:
+            '<span class="test-btnGroup">' +
+            '   <span' +
+            '       ng-repeat="label in labels"' +
+            '       ng-class="{ \'is-selected \': $index === currentIndex}"' + 
+            '       ng-click="select($index, label)"' +
+            '   >{{label}}</span>' +
+            '</span>',
+        link: function(scope, element) {
+            scope.currentIndex = 0;
+            scope.select = function($index, label) {
+                scope.currentIndex = $index;
+                scope.onSelect({index: $index, label: label});
+            }
+        }
+    };
+});
+
+app.controller('isolateCtrl', function($scope) {
+    $scope.showAlert = function(index, label) {
+        alert('index: '+ index +', label: '+ label);
+    };
+});
+
+/*  ディレクティブ内容の要素をtemplateに使えるように
+ *  directive - transclude
+ */
+app.directive('testTransclude', function() {
+    return {
+        restrict: 'E',
+        replace: true,
+        transclude: true,
+        scope: {
+            icon: '@'
+        },
+        template:
+            '<span class="test-btn">' +
+            '   <i class="fa fa-{{icon}}"></i>' +
+            '   <span ng-transclude></span>' +
+            '</span>'
+    };
+});
+
+
+

@@ -87,5 +87,18 @@
         <p><test-btn icon='edit'></test-btn></p>
         <p><test-btn icon='plus'></test-btn></p>
         <p><test-btn icon='trash'></test-btn></p>
+
+
+        <h1>directive-isolate</h1>
+        <div ng-controller=isolateCtrl>
+            <test-btn-group labels="['btn1', 'btn2', 'btn3']"
+            on-select="showAlert(index, label)"></test-btn-group>
+        </div>
+
+        <h1>directive-transclude</h1>
+        <p><test-transclude icon="edit">編集</test-transclude></p>
+        <p><test-transclude icon="plus">追加</test-transclude></p>
+        <p><test-transclude icon="trash">削除</test-transclude></p>
+
     </body>
 </html>
