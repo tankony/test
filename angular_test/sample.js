@@ -186,3 +186,50 @@ app.controller('ProviderCtrl', function($scope, provider_counter, valuesample) {
     };
 });
 
+/*
+ *  directive sample
+ */
+app.directive('testAlert', function($window) {
+    return {
+        link: function(scope, element, attrs) {
+             var message = attrs.message; 
+
+             console.log(element);
+             console.log(attrs);
+
+             element.on('click', function() {
+                $window.alert(message);
+             });
+        }
+    };
+});
+
+
+app.directive('testBtn', function() {
+
+    return {
+    
+        restrict: 'E',
+
+        // template
+        template:
+            '<span class="my-test">' +
+            '   <i class="fa fa-{{icon}}"></i>' +
+            '   <span>{{label}}</span>' +
+            '</span>',
+
+        // 別ファイルとして読み込むことも可能
+        // template: 'tmplate/test-btn.tpl',
+        
+        replace: true,
+
+        scope: true,
+
+        link: function(scope, element, attrs) {
+            scope.icon = attrs.icon;
+            scope.label = attrs.label;
+        }
+    };
+});
+
+

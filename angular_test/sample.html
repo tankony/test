@@ -6,6 +6,7 @@
         <meta charset="utf-8">
         <script src="../../script/angular.min.js"></script>
         <script src="sample.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     </head>
     <body>
         <h1>angular test</h1>
@@ -79,5 +80,12 @@
             <button ng-click="changename()">CHANGE</button>
         </div>
 
+        <h1>directive - sample1</h1>
+        <button test-alert message="alert test!!">directive test</button>
+
+        <h1>directive - sample2</h1>
+        <p><test-btn icon='edit'></test-btn></p>
+        <p><test-btn icon='plus'></test-btn></p>
+        <p><test-btn icon='trash'></test-btn></p>
     </body>
 </html>
